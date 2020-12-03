@@ -1,11 +1,11 @@
 {
-  "name": "MERN-boilerplate",
+  "name": "DistortedPages",
   "version": "1.0.0",
-  "description": "MERN stack project boilerplate",
+  "description": "Distorted Pages project",
   "author": "Eugene Cheung",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arkon/MERN-boilerplate.git"
+    "url": "git+https://github.com/Zycl0n/DistortedPages.git"
   },
   "license": "MIT",
   "private": true,
