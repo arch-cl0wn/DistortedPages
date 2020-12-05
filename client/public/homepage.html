@@ -88,30 +88,6 @@ img {vertical-align: middle;}
   animation-duration: 1.5s;
 }
 
-#navbar {
-  background-color: #333;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  display: block;
-  transition: top 0.3s;
-}
-
-#navbar a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 15px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-#navbar a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
 .sidenav {
   height: 100%;
   width: 0;
@@ -119,7 +95,7 @@ img {vertical-align: middle;}
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #111;
+  background-color: #657680;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
@@ -129,7 +105,7 @@ img {vertical-align: middle;}
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: #000000;
   display: block;
   transition: 0.3s;
 }
@@ -222,7 +198,7 @@ input[type=text], input[type=password] {
 }
 </style>
 </head>
-<body>
+<body class="w3-theme-l5">
           
 <div class="slideshow-container">
 
@@ -244,19 +220,42 @@ input[type=text], input[type=password] {
   <div class="text">Caption Three</div>
 </div>
 
-<div id="navbar">
-    <a href="#home" onclick="openNav()"><i class="fa fa-home w3-xlarge"></i> Home</a>
-    <a href="#search" onclick="openSearch()"><i class="fa fa-search w3-large"></i> Search</a>
-    <a href="#login" onclick="document.getElementById('id01').style.display='block'"><i class="fa fa-user w3-large"></i> Login</a>
-    <a href="#signup" onclick="document.getElementById('id02').style.display='block'"><i class="fa fa-user-circle w3-large"></i> Signup</a>
-</div>
+<!-- Navbar -->
+<div class="w3-top w3-blue-grey">
+    <div class="w3-bar w3-theme-d2 w3-left-align w3-large" id="navbar">
+     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+     <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4" onclick="openNav()"><i class="fa fa-home w3-margin-right"></i>Logo</a>
+     <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Search" onclick="openSearch()"><i class="fa fa-search"></i></a>
+     <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Login" onclick="document.getElementById('id01').style.display='block'"><i class="fa fa-user"></i></a>
+     <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Signup" onclick="document.getElementById('id02').style.display='block'"><i class="fa fa-user-circle"></i></a>
+     <div class="w3-dropdown-hover w3-hide-small">
+       <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green">3</span></button>     
+       <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
+         <a href="#" class="w3-bar-item w3-button">One new friend request</a>
+         <a href="#" class="w3-bar-item w3-button">Ejaaz posted on your wall</a>
+         <a href="#" class="w3-bar-item w3-button">Ejaaz likes your post</a>
+       </div>
+     </div>
+     <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account">
+       <img src="https://i.quotev.com/t7zznzbvr4vq.jpg" class="w3-circle" style="height:23px;width:23px" alt="Avatar">
+     </a>
+    </div>
+   </div>
+   
+   <!-- Navbar on small screens -->
+   <div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
+     <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
+     <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
+     <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
+     <a href="#" class="w3-bar-item w3-button w3-padding-large">My Profile</a>
+   </div>
 
 <div id="id01" class="w3-modal">
     <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
 
       <div class="w3-center"><br>
         <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
-        <img src="https://i.pinimg.com/originals/d4/e2/2d/d4e22dd0c172a148b1c318276a6a9dfa.jpg" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
+        <img src="https://i.quotev.com/t7zznzbvr4vq.jpg" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
       </div>
 
       <form class="w3-container" action="/action_page.php">
@@ -292,7 +291,7 @@ input[type=text], input[type=password] {
         <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="usrname" required>
   
         <label><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
+        <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="psw" required>
   
         <label><b>Repeat Password</b></label>
         <input class="w3-input w3-border" type="password" placeholder="Repeat Password" name="psw-repeat" required>

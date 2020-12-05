@@ -9,15 +9,65 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #657680;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #000000;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 300px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
 </style>
 <body class="w3-theme-l5">
 
 <!-- Navbar -->
-<div class="w3-top">
+<div class="w3-top" id="navbar">
  <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
   <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Logo</a>
-  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i class="fa fa-globe"></i></a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4" onclick="openNav1()"><i class="fa fa-home w3-margin-right"></i>Logo</a>
+  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Search" onclick="openSearch()"><i class="fa fa-search"></i></a>
   <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Account Settings"><i class="fa fa-user"></i></a>
   <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"><i class="fa fa-envelope"></i></a>
   <div class="w3-dropdown-hover w3-hide-small">
@@ -29,7 +79,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
     </div>
   </div>
   <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account">
-    <img src="https://i.pinimg.com/originals/d4/e2/2d/d4e22dd0c172a148b1c318276a6a9dfa.jpg" class="w3-circle" style="height:23px;width:23px" alt="Avatar">
+    <img src="https://i.quotev.com/t7zznzbvr4vq.jpg" class="w3-circle" style="height:23px;width:23px" alt="Avatar">
   </a>
  </div>
 </div>
@@ -42,6 +92,26 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
   <a href="#" class="w3-bar-item w3-button w3-padding-large">My Profile</a>
 </div>
 
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#"><i class="fa fa-user"></i> My Profile</a>
+  <a href="#"><i class="fa fa-inbox"></i> Messages</a>
+  <a href="#"><i class="fa fa-comments"></i> My Posts</a>
+  <a href="#"><i class="fa fa-edit"></i> My Creations</a>
+  <a href="#"><i class="fa fa-users"></i> My Groups</a>
+  <a href="#"><i class="fa fa-cog"></i> Settings</a>
+</div>
+
+<div id="myOverlay" class="overlay">
+  <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+  <div class="overlay-content">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Search.." name="search">
+      <button class="w3-btn w3-bluegrey w3-round-large"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</div>
+
 <!-- Page Container -->
 <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">    
   <!-- The Grid -->
@@ -52,7 +122,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
       <div class="w3-card w3-round w3-white">
         <div class="w3-container">
          <h4 class="w3-center">My Profile</h4>
-         <p class="w3-center"><img src="https://i.pinimg.com/originals/d4/e2/2d/d4e22dd0c172a148b1c318276a6a9dfa.jpg" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+         <p class="w3-center"><img src="https://i.quotev.com/t7zznzbvr4vq.jpg" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
          <hr>
          <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
          <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> Kabul, Afghanistan</p>
@@ -81,22 +151,22 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
          <div class="w3-row-padding">
          <br>
            <div class="w3-half">
-             <img src="https://i.pinimg.com/originals/d4/e2/2d/d4e22dd0c172a148b1c318276a6a9dfa.jpg" style="width:100%" class="w3-margin-bottom">
+             <img src="https://i.quotev.com/t7zznzbvr4vq.jpg" style="width:100%" class="w3-margin-bottom">
            </div>
            <div class="w3-half">
-             <img src="https://i.pinimg.com/originals/d4/e2/2d/d4e22dd0c172a148b1c318276a6a9dfa.jpg" style="width:100%" class="w3-margin-bottom">
+             <img src="https://i.quotev.com/t7zznzbvr4vq.jpg" style="width:100%" class="w3-margin-bottom">
            </div>
            <div class="w3-half">
-             <img src="https://i.pinimg.com/originals/d4/e2/2d/d4e22dd0c172a148b1c318276a6a9dfa.jpg" style="width:100%" class="w3-margin-bottom">
+             <img src="https://i.quotev.com/t7zznzbvr4vq.jpg" style="width:100%" class="w3-margin-bottom">
            </div>
            <div class="w3-half">
-             <img src="https://i.pinimg.com/originals/d4/e2/2d/d4e22dd0c172a148b1c318276a6a9dfa.jpg" style="width:100%" class="w3-margin-bottom">
+             <img src="https://i.quotev.com/t7zznzbvr4vq.jpg" style="width:100%" class="w3-margin-bottom">
            </div>
            <div class="w3-half">
-             <img src="https://i.pinimg.com/originals/d4/e2/2d/d4e22dd0c172a148b1c318276a6a9dfa.jpg" style="width:100%" class="w3-margin-bottom">
+             <img src="https://i.quotev.com/t7zznzbvr4vq.jpg" style="width:100%" class="w3-margin-bottom">
            </div>
            <div class="w3-half">
-             <img src="https://i.pinimg.com/originals/d4/e2/2d/d4e22dd0c172a148b1c318276a6a9dfa.jpg" style="width:100%" class="w3-margin-bottom">
+             <img src="https://i.quotev.com/t7zznzbvr4vq.jpg" style="width:100%" class="w3-margin-bottom">
            </div>
          </div>
           </div>
@@ -153,17 +223,17 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
       </div>
       
       <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-        <img src="https://i.pinimg.com/originals/d4/e2/2d/d4e22dd0c172a148b1c318276a6a9dfa.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <img src="https://i.quotev.com/t7zznzbvr4vq.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
         <span class="w3-right w3-opacity">1 min</span>
         <h4>R</h4><br>
         <hr class="w3-clear">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           <div class="w3-row-padding" style="margin:0 -16px">
             <div class="w3-half">
-              <img src="https://i.pinimg.com/originals/d4/e2/2d/d4e22dd0c172a148b1c318276a6a9dfa.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+              <img src="https://i.quotev.com/t7zznzbvr4vq.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
             </div>
             <div class="w3-half">
-              <img src="https://i.pinimg.com/originals/d4/e2/2d/d4e22dd0c172a148b1c318276a6a9dfa.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
+              <img src="https://i.quotev.com/t7zznzbvr4vq.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
           </div>
         </div>
         <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
@@ -171,7 +241,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
       </div>
       
       <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-        <img src="https://i.pinimg.com/originals/d4/e2/2d/d4e22dd0c172a148b1c318276a6a9dfa.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <img src="https://i.quotev.com/t7zznzbvr4vq.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
         <span class="w3-right w3-opacity">16 min</span>
         <h4>N</h4><br>
         <hr class="w3-clear">
@@ -181,12 +251,12 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
       </div>  
 
       <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-        <img src="https://i.pinimg.com/originals/d4/e2/2d/d4e22dd0c172a148b1c318276a6a9dfa.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <img src="https://i.quotev.com/t7zznzbvr4vq.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
         <span class="w3-right w3-opacity">32 min</span>
         <h4>Nom nom</h4><br>
         <hr class="w3-clear">
         <p>Have you seen this?</p>
-        <img src="https://i.pinimg.com/originals/d4/e2/2d/d4e22dd0c172a148b1c318276a6a9dfa.jpg" style="width:100%" class="w3-margin-bottom">
+        <img src="https://i.quotev.com/t7zznzbvr4vq.jpg" style="width:100%" class="w3-margin-bottom">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
         <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
@@ -200,7 +270,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
       <div class="w3-card w3-round w3-white w3-center">
         <div class="w3-container">
           <p>Upcoming Events:</p>
-          <img src="https://i.pinimg.com/originals/d4/e2/2d/d4e22dd0c172a148b1c318276a6a9dfa.jpg" alt="Forest" style="width:100%;">
+          <img src="https://i.quotev.com/t7zznzbvr4vq.jpg" alt="Forest" style="width:100%;">
           <p><strong>New Quiz</strong></p>
           <p>Friday</p>
           <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
@@ -211,7 +281,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
       <div class="w3-card w3-round w3-white w3-center">
         <div class="w3-container">
           <p>Friend Request</p>
-          <img src="https://i.pinimg.com/originals/d4/e2/2d/d4e22dd0c172a148b1c318276a6a9dfa.jpg" alt="Avatar" style="width:50%"><br>
+          <img src="https://i.quotev.com/t7zznzbvr4vq.jpg" alt="Avatar" style="width:50%"><br>
           <span>Chrys</span>
           <div class="w3-row w3-opacity">
             <div class="w3-half">
@@ -276,6 +346,34 @@ function openNav() {
     x.className = x.className.replace(" w3-show", "");
   }
 }
+
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("navbar").style.top = "0";
+  } else {
+    document.getElementById("navbar").style.top = "-50px";
+  }
+  prevScrollpos = currentScrollPos;
+}
+
+function openNav1() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
+function openSearch() {
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function closeSearch() {
+  document.getElementById("myOverlay").style.display = "none";
+}
+
 </script>
 
 </body>
