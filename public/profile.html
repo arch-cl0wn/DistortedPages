@@ -10,6 +10,10 @@
 <style>
 html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 
+:root{
+  --colourch: #657680 ;
+}
+
 .sidenav {
   height: 100%;
   width: 0;
@@ -46,7 +50,7 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 
 
 input[type=text], input[type=password] {
-  width: 100%;
+  width: 50%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -65,9 +69,9 @@ input[type=text], input[type=password] {
 <!-- Navbar -->
 <div class="w3-top" id="navbar">
  <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
-  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><img src="https://i.quotev.com/t7zznzbvr4vq.jpg" class="w3-circle" style="height:23px;width:23px" alt="Avatar"></a> 
   <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4" onclick="openNav1()"><i class="fa fa-home w3-margin-right"></i>Logo</a>
-  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Search" onclick="openSearch()"><i class="fa fa-search"></i></a>
+  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Search"><i class="fa fa-search"></i></a>
   <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Account Settings"><i class="fa fa-user"></i></a>
   <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Messages"><i class="fa fa-envelope"></i></a>
   <div class="w3-dropdown-hover w3-hide-small">
@@ -84,31 +88,19 @@ input[type=text], input[type=password] {
  </div>
 </div>
 
-<!-- Navbar on small screens -->
-<div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
-  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large">My Profile</a>
 </div>
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="#"><i class="fa fa-user"></i> My Profile</a>
   <a href="#"><i class="fa fa-inbox"></i> Messages</a>
-  <a href="#"><i class="fa fa-comments"></i> My Posts</a>
-  <a href="#"><i class="fa fa-edit"></i> My Creations</a>
+  <a href="#"><i class="fa fa-comments"></i> Posts</a>
+  <a href="#"><i class="fa fa-edit"></i> Create</a>
   <a href="#"><i class="fa fa-users"></i> My Groups</a>
-  <a href="#"><i class="fa fa-cog"></i> Settings</a>
-</div>
-
-<div id="myOverlay" class="overlay">
-  <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
-  <div class="overlay-content">
-    <form action="/action_page.php">
-      <input type="text" placeholder="Search.." name="search">
-      <button class="w3-btn w3-bluegrey w3-round-large"><i class="fa fa-search"></i></button>
-    </form>
+  <a href="#"  onclick="myFunction('demoAcc')"><i class="fa fa-cog"></i> Settings <i class="fa fa-caret-down"></i></a>
+  <div id="demoAcc" class="w3-hide w3-blue-grey w3-card-4"> 
+    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-left-align" style="font-size: medium;"><strong>Account Settings</strong></a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-left-align" style="font-size: medium;"><strong>Misc</strong></a>
   </div>
 </div>
 
@@ -142,9 +134,10 @@ input[type=text], input[type=password] {
           <div id="Demo2" class="w3-hide w3-container">
             <p>Some other text..</p>
           </div>
-          <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-comments fa-fw w3-margin-right"></i>Message Me</button>
-          <div id="Demo1" class="w3-hide w3-container">
-            <p>Some text..</p>
+          <button onclick="myFunction('Demo4')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-comments fa-fw w3-margin-right"></i>Message Me</button>
+          <div id="Demo4" class="w3-hide w3-container">
+            <textarea  placeholder="Your message here..." cols="35" rows="4"></textarea>
+            
           </div>
           <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Posts</button>
           <div id="Demo3" class="w3-hide w3-container">
@@ -314,11 +307,6 @@ input[type=text], input[type=password] {
 </div>
 <br>
 
-<!-- Footer -->
-<footer class="w3-container w3-theme-d3 w3-padding-16">
-  <h5>Footer</h5>
-</footer>
-
 <footer class="w3-container w3-theme-d5">
   <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
 </footer>
@@ -334,16 +322,6 @@ function myFunction(id) {
     x.className = x.className.replace("w3-show", "");
     x.previousElementSibling.className = 
     x.previousElementSibling.className.replace(" w3-theme-d1", "");
-  }
-}
-
-// Used to toggle the menu on smaller screens when clicking on the menu button
-function openNav() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
   }
 }
 
@@ -364,14 +342,6 @@ function openNav1() {
 
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
-}
-
-function openSearch() {
-  document.getElementById("myOverlay").style.display = "block";
-}
-
-function closeSearch() {
-  document.getElementById("myOverlay").style.display = "none";
 }
 
 </script>

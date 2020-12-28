@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>  
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -199,7 +202,7 @@ input[type=text], input[type=password] {
 </style>
 </head>
 <body class="w3-theme-l5">
-          
+<div id = "root"></div>       
 <div class="slideshow-container">
 
 <div class="mySlides fade">
@@ -223,8 +226,8 @@ input[type=text], input[type=password] {
 <!-- Navbar -->
 <div class="w3-top w3-blue-grey">
     <div class="w3-bar w3-theme-d2 w3-left-align w3-large" id="navbar">
-     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
-     <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4" onclick="openNav()"><i class="fa fa-home w3-margin-right"></i>Logo</a>
+     <!-- <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a> -->
+     <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4" onclick="openNav()"><i class="fa fa-home w3-margin-right"></i> Home</a>
      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Search" onclick="openSearch()"><i class="fa fa-search"></i></a>
      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Login" onclick="document.getElementById('id01').style.display='block'"><i class="fa fa-user"></i></a>
      <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Signup" onclick="document.getElementById('id02').style.display='block'"><i class="fa fa-user-circle"></i></a>
@@ -241,14 +244,6 @@ input[type=text], input[type=password] {
      </a>
     </div>
    </div>
-   
-   <!-- Navbar on small screens -->
-   <div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
-     <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
-     <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
-     <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
-     <a href="#" class="w3-bar-item w3-button w3-padding-large">My Profile</a>
-   </div>
 
 <div id="id01" class="w3-modal">
     <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
@@ -258,7 +253,7 @@ input[type=text], input[type=password] {
         <img src="https://i.quotev.com/t7zznzbvr4vq.jpg" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
       </div>
 
-      <form class="w3-container" action="/action_page.php">
+      <form class="w3-container" action="profile.html">
         <div class="w3-section">
           <label><b>Username</b></label>
           <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="usrname" required>
@@ -277,35 +272,32 @@ input[type=text], input[type=password] {
     </div>
 </div>
 
-
-
 <div id="id02" class="w3-modal">
-    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+  <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
     <div class="w3-center"><br>
-        <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+      <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
     </div>
 
     <form class="w3-container" action="/action_page.php">
       <div class="w3-section">
         <label><b>Username</b></label>
         <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="usrname" required>
-  
         <label><b>Password</b></label>
-        <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="psw" required>
-  
+        <input class="w3-input w3-border w3-margin-bottom" type="password" placeholder="Enter Password" name="psw" required>
         <label><b>Repeat Password</b></label>
-        <input class="w3-input w3-border" type="password" placeholder="Repeat Password" name="psw-repeat" required>
-        
+        <input class="w3-input w3-border" type="password" placeholder="Repeat Password" name="rpsw" required>
+        <button class="w3-button w3-block w3-blue-grey w3-section w3-padding" type="submit">Signup</button>
+        <button onclick="document.getElementById('id02').style.display='none'" type="button" class="w3-button w3-block w3-red w3-section w3-padding">Cancel</button>
         <input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Remember me
       </div>
     </form>
+
     <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-        <button onclick="document.getElementById('id02').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
-        <button class="w3-button w3-blue-grey" type="submit">Signup</button>
-        <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
     </div>
 
-</div>
+  </div>
 </div>
   
 
@@ -316,16 +308,10 @@ input[type=text], input[type=password] {
     <a href="#"><i class="fa fa-comments"></i> My Posts</a>
     <a href="#"><i class="fa fa-edit"></i> My Creations</a>
     <a href="#"><i class="fa fa-users"></i> My Groups</a>
-    <a href="#"><i class="fa fa-cog"></i> Settings</a>
-</div>
-
-<div id="myOverlay" class="overlay">
-    <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
-    <div class="overlay-content">
-      <form action="/action_page.php">
-        <input type="text" placeholder="Search.." name="search">
-        <button class="w3-btn w3-bluegrey w3-round-large"><i class="fa fa-search"></i></button>
-      </form>
+    <a href="#" onclick="myFunction('demoAcc2')"><i class="fa fa-cog"></i> Settings <i class="fa fa-caret-down"></i></a>
+    <div id="demoAcc2" class="w3-hide w3-blue-grey w3-card-4"> 
+      <a href="#" class="w3-bar-item w3-button w3-padding-large w3-left-align" style="font-size: medium;"><strong>Account Settings</strong></a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large w3-left-align" style="font-size: medium;"><strong>Misc</strong></a>
     </div>
 </div>
 
@@ -341,6 +327,7 @@ input[type=text], input[type=password] {
   <span class="dot" onclick="currentSlide(2)"></span> 
   <span class="dot" onclick="currentSlide(3)"></span> 
 </div>
+
 
 <script>
 var slideIndex = 1;
@@ -389,12 +376,16 @@ function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
 
-function openSearch() {
-  document.getElementById("myOverlay").style.display = "block";
-}
-
-function closeSearch() {
-  document.getElementById("myOverlay").style.display = "none";
+function myFunction(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+    x.previousElementSibling.className += " w3-theme-d1";
+  } else { 
+    x.className = x.className.replace("w3-show", "");
+    x.previousElementSibling.className = 
+    x.previousElementSibling.className.replace(" w3-theme-d1", "");
+  }
 }
 
 </script>

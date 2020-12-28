@@ -1,24 +1,25 @@
-# Compiled files
-dist/
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Config file
-config/config.js
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
 
-# Node stuff
-node_modules
-.npm
-.node_repl_history
-.lock-wscript
-logs
-*.log
-npm-debug.log*
+# testing
+/coverage
 
-# OS stuff
-Desktop.ini
-ehthumbs.db
-Thumbs.db
-$RECYCLE.BIN/
-._*
+# production
+/build
+
+# misc
 .DS_Store
-.Spotlight-V100
-.Trashes
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+.eslintcache
