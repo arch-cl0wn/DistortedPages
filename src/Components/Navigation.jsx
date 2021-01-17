@@ -19,9 +19,16 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import auth from './auth/auth-helper';
-import { withRouter } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
+import MyButton1 from './button1';
+import MyButton from './button';
 
 const drawerWidth = 240;
+
+const isActive = (history, path) => {
+	if (history.location.pathname === path) return { color: '#ffffff' };
+	else return { color: '#ffffff' };
+};
 
 const useStyles = makeStyles((theme) => ({
 
@@ -142,6 +149,7 @@ const Navigation = withRouter(({history}) => {
           <Typography className={classes.title} variant="h6" noWrap>
             Distorted Pages
           </Typography>
+          <div className={classes.sectionDesktop}>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -155,7 +163,25 @@ const Navigation = withRouter(({history}) => {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
+          </div>
+          <div className={classes.sectionMobile}>
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+          </div>
+          </div>
           <div className={classes.grow} />
+          {!auth.isAuthenticated() && (
+				<div>
+					<NavLink to="/signup">
+						<MyButton1 style={isActive(history, '/signup')}>Sign up</MyButton1>
+					</NavLink>
+					<NavLink to="/signin">
+						<MyButton1 style={isActive(history, '/signin')}>Sign In</MyButton1>
+					</NavLink>
+				</div>
+			)}
           {auth.isAuthenticated() && (
           <div>
           <div className={classes.sectionDesktop}>
@@ -164,6 +190,14 @@ const Navigation = withRouter(({history}) => {
                 <NotificationsIcon />
               </Badge>
             </IconButton>
+          <MyButton
+						color="inherit"
+						onClick={() => {
+							auth.signout(() => history.push('/'));
+						}}
+					>
+						Sign out
+					</MyButton>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
@@ -179,6 +213,7 @@ const Navigation = withRouter(({history}) => {
           )}
         </Toolbar>
       </AppBar>
+      <br/>
 
       <Drawer
         className={classes.drawer}
