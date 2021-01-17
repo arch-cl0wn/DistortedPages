@@ -1,11 +1,9 @@
 import React from 'react';
-import SwipeableTextMobileStepper from './Components/carousel';
-import PrimarySearchAppBar from './Components/navbar';
+import SwipeableTextMobileStepper from './carousel';
 
 const Test = () => {
     return(
         <div>
-            <PrimarySearchAppBar />
             <SwipeableTextMobileStepper />
         </div>
     );

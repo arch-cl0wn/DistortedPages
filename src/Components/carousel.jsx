@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: '100%',
     flexGrow: 'wrap',
-    background: 'linear-gradient(90deg, rgba(10,11,10,1) 0%, rgba(39,43,39,1) 100%)',  
+    background: 'linear-gradient(90deg, rgba(9,14,23,1) 0%, rgba(28,42,68,1) 100%)',  
     border: 0,
     borderRadius: 3,
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
@@ -46,6 +46,9 @@ const useStyles = makeStyles((theme) => ({
     height: 48,
     padding: '0px 0px',
   },
+  label: {
+    color: 'white',
+  }, 
   header: {
     display: 'flex',
     alignItems: 'center',
@@ -54,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.default,
   },
   img: {
-    height: 255,
+    height: 270,
     display: 'block',
     maxWidth: '100%',
     overflow: 'hidden',
@@ -106,13 +109,13 @@ const SwipeableTextMobileStepper = () => {
         variant="dots"
         activeStep={activeStep}
         nextButton={
-          <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
+          <Button className={classes.label} size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
             Next
             {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
           </Button>
         }
         backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+          <Button className={classes.label} size="small" onClick={handleBack} disabled={activeStep === 0}>
             {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
             Back
           </Button>

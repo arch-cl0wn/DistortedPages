@@ -1,19 +1,20 @@
 import React, {Component} from 'react';
 import {
   BrowserRouter as Router,
-  Switch,
-  Route
 } from "react-router-dom";
-import Test from './homepage';
+import theme from './Components/theme';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+
+import Routes from './Routes';
 
 class App extends Component {
   render(){
   return(
     <div className="App">
     <Router>
-      <Switch>
-        <Route exact path="/" component={Test} />
-      </Switch>
+    <MuiThemeProvider theme={theme}>
+					<Routes />
+		</MuiThemeProvider>
     </Router>
     </div>
   );
