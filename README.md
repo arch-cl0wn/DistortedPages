@@ -2,6 +2,8 @@
 
 # Distorted Pages
 
+[![Build Status](https://travis-ci.com/arch-cl0wn/DistortedPages.svg?branch=master)](https://travis-ci.com/arch-cl0wn/DistortedPages)
+
 #### What you need to run this code
 
 1. Node (13.12.0)
