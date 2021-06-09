@@ -3,6 +3,7 @@
 # Distorted Pages
 
 [![Build Status](https://travis-ci.com/arch-cl0wn/DistortedPages.svg?branch=master)](https://travis-ci.com/arch-cl0wn/DistortedPages)
+![GitHub](https://img.shields.io/github/license/arch-cl0wn/DistortedPages)
 
 #### What you need to run this code
 

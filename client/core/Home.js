@@ -4,16 +4,12 @@ import Grid from '@material-ui/core/Grid'
 import auth from './../auth/auth-helper'
 import FindPeople from './../user/FindPeople'
 import Newsfeed from './../post/Newsfeed'
-import Carousel from './Carousel'
-import Paper from '@material-ui/core/Paper'
+import Banner from './../assets/images/quillinx_banner.png'
 
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
-  },
-  paperContainer: {
-    marginTop: 0,
   },
 }))
 
@@ -35,9 +31,13 @@ export default function Home({history}){
     return (
       <div className={classes.root}>
         { !defaultPage &&
-            <Paper className={classes.paperContainer}>
-              <Carousel/>
-            </Paper>
+            <div style={{
+                      backgroundImage: 'url('+Banner+')',
+                      backgroundSize: "cover",
+                      height: "69vh",
+                      color: "#f5f5f5"
+                    }} >
+            </div>
         }
         {defaultPage &&
           <Grid container spacing={8}>
