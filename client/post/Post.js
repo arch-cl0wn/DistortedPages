@@ -20,21 +20,22 @@ import Comments from './Comments'
 
 const useStyles = makeStyles(theme => ({
   card: {
-    maxWidth:600,
+    maxWidth:800,
     margin: 'auto',
     marginBottom: theme.spacing(3),
     backgroundColor: 'rgba(0, 0, 0, 0.06)'
   },
   cardContent: {
     backgroundColor: 'white',
-    padding: `${theme.spacing(2)}px 0px`
+    padding: `${theme.spacing(2)}px 0px`,
   },
   cardHeader: {
     paddingTop: theme.spacing(1),
     paddingBottom: theme.spacing(1)
   },
   text: {
-    margin: theme.spacing(2)
+    margin: theme.spacing(2),
+    wordWrap: 'break-word'
   },
   photo: {
     textAlign: 'center',
@@ -117,7 +118,7 @@ export default function Post (props){
             className={classes.cardHeader}
           />
         <CardContent className={classes.cardContent}>
-          <Typography component="p" className={classes.text}>
+          <Typography component="span" display="block" className={classes.text}>
             {props.post.text}
           </Typography>
           {props.post.photo &&

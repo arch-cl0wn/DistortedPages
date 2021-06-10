@@ -125,13 +125,6 @@ export default function Profile({ match }) {
     return (
       <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item xs = {12}>
-        <Paper elevation={3} className={classes.paper}>
-        <Typography variant="h4" className={classes.title}>
-          Profile
-        </Typography>
-        </Paper>
-        </Grid>
         <Grid item xs={8}>
         <Paper elevation={3}>
         <List dense>
@@ -184,7 +177,7 @@ export default function Profile({ match }) {
         </Paper>
         </Grid>
       </Grid>
-        </div>
+    </div>
 
     )
 }

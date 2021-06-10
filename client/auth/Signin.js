@@ -2,6 +2,9 @@ import React, {useState} from 'react'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
+import Box from '@material-ui/core/Box'
+import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import Icon from '@material-ui/core/Icon'
@@ -9,7 +12,21 @@ import { makeStyles } from '@material-ui/core/styles'
 import auth from './../auth/auth-helper'
 import {Redirect} from 'react-router-dom'
 import {signin} from './api-auth.js'
+import {Link} from 'react-router-dom'
 import Textbox1 from '../core/Textbox1'
+
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://www.quillinx.co">
+        Quillinx
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -29,10 +46,23 @@ const useStyles = makeStyles(theme => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 300
+    width: 350
+  },
+  paper: {
+    marginTop: theme.spacing(3),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+    alignItems: 'center'
   },
   submit: {
     margin: 'auto',
+    width: 350,
+    height: 40,
     marginBottom: theme.spacing(2)
   }
 }))
@@ -80,11 +110,16 @@ export default function Signin(props) {
   return (
       <Card className={classes.card}>
         <CardContent>
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+        </div>
           <Typography variant="h6" className={classes.title}>
             Sign In
           </Typography>
-          <Textbox1 id="username" type="username" label="Username" className={classes.textField} value={values.username} onChange={handleChange('username')} margin="normal"/><br/>
-          <Textbox1 id="password" type="password" label="Password" className={classes.textField} value={values.password} onChange={handleChange('password')} margin="normal"/>
+          <Textbox1 id="username" type="username" label="Username" variant="outlined" className={classes.textField} value={values.username} onChange={handleChange('username')} margin="normal"/><br/>
+          <Textbox1 id="password" type="password" label="Password" variant="outlined" className={classes.textField} value={values.password} onChange={handleChange('password')} margin="normal"/>
           <br/> {
             values.error && (<Typography component="p" color="error">
               <Icon color="error" className={classes.error}>error</Icon>
@@ -92,9 +127,13 @@ export default function Signin(props) {
             </Typography>)
           }
         </CardContent>
+        <br/>
         <CardActions>
-          <Button color="primary" variant="contained" onClick={clickSubmit} className={classes.submit}>Submit</Button>
+          <Button color="primary" fullWidth variant="contained" onClick={clickSubmit} className={classes.submit}>Submit</Button>
         </CardActions>
+        <Box mt={5}>
+          <Copyright />
+        </Box>
       </Card>
     )
 }

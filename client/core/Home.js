@@ -34,7 +34,7 @@ export default function Home({history}){
             <div style={{
                       backgroundImage: 'url('+Banner+')',
                       backgroundSize: "cover",
-                      height: "69vh",
+                      height: "71vh",
                       color: "#f5f5f5"
                     }} >
             </div>

@@ -127,8 +127,8 @@ export default function Signup (){
           <Button color="primary" fullWidth variant="contained" onClick={clickSubmit} className={classes.submit}>Submit</Button>
         </CardActions>
         <Box mt={5}>
-        <Copyright />
-      </Box>
+          <Copyright />
+        </Box>
       </Card>
       <Dialog open={values.open} disableBackdropClick={true}>
         <DialogTitle>New Account</DialogTitle>
