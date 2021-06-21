@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import {fade, makeStyles} from '@material-ui/core/styles'
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
@@ -58,17 +58,13 @@ const useStyles = makeStyles((theme) => ({
     const [search, setSearch] = useState('')
 
     const fetchUsers = (query) => {
-      useEffect(()=> {
-        searchUsers({query}).then(data => {
-          if (data && data.error){
-            console.log(data.error)
-          }else{
-            setSearch = query
-          }
-        })
-        
-      }, [])
-      
+      searchUsers({query}).then((data) => {
+        if (data && data.error){
+          console.log(data.error)
+        }else{
+          setSearch(query)
+        }
+      })
     }
 
       return(
@@ -89,4 +85,4 @@ const useStyles = makeStyles((theme) => ({
             </div>
         </div>
       )
-  };
+  }
