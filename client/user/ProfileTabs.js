@@ -24,9 +24,9 @@ export default function ProfileTabs ( props ){
             textColor="primary"
             variant="fullWidth"
           >
-            <Tab label="Posts" />
-            <Tab label="Following" />
-            <Tab label="Followers" />
+            <Tab label={`Posts [${props.posts.length}]`} />
+            <Tab label={`Following [${props.user.following.length}]`} />
+            <Tab label={`Followers [${props.user.followers.length}]`} />
           </Tabs>
         </AppBar>
        {tab === 0 && <TabContainer><PostList removeUpdate={props.removePostUpdate} posts={props.posts}/></TabContainer>}

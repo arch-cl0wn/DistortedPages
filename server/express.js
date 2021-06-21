@@ -38,13 +38,21 @@ app.use(compress())
 app.use(helmet())
 // enable CORS - Cross Origin Resource Sharing
 app.use(cors())
+ 
 
 app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
+
 
 // mount routes
 app.use('/', userRoutes)
 app.use('/', authRoutes)
 app.use('/', postRoutes)
+
+app.use((req, res, next)=>{  
+  res.setHeader("Cross-Origin-Opener-Policy", "same-origin");  
+  res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");  
+  next();  
+}); 
 
 app.get('*', (req, res) => {
   const sheets = new ServerStyleSheets()

@@ -1,13 +1,11 @@
 import React from 'react'
-import {fade, makeStyles} from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
-import InputBase from '@material-ui/core/InputBase';
-import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 import Button from '@material-ui/core/Button'
+import SearchUser from './SearchUser'
 import auth from './../auth/auth-helper'
 import {Link, withRouter} from 'react-router-dom'
 
@@ -19,56 +17,9 @@ const isActive = (history, path) => {
     return {color: '#ffffff'}
 }
 
-const useStyles = makeStyles((theme) => ({
-  search: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
-      width: 'auto',
-    },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  inputRoot: {
-    color: 'inherit',
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '23ch',
-    },
-  },
-  sectionDesktop: {
-    alignContent: 'left',
-    display: 'none',
-    [theme.breakpoints.up('md')]: {
-      display: 'flex',
-    },
-  },
-}));
 
 
 function Menu({history}) {
-  const classes = useStyles()
 
   return(
   <div>
@@ -82,21 +33,7 @@ function Menu({history}) {
         <Typography variant="h4" color="inherit" noWrap>
           Quillinx
         </Typography>
-        <div className={classes.sectionDesktop}>
-        <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ 'aria-label': 'search' }}
-              />
-            </div>
-        </div>
+        <SearchUser/>
         <div style={{marginLeft: 'auto'}}>
         {
           !auth.isAuthenticated() && (<span>

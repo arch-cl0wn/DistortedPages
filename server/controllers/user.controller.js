@@ -178,6 +178,18 @@ const findPeople = async (req, res) => {
   }
 }
 
+const searchUser = async(req, res) => {
+  let userPattern = new RegExp("^"+req.body.query)
+  try{
+    let users = await User.find({username:{$regex:userPattern}})
+    res.json(users)
+  }catch(err){
+    return res.status(400).json({
+      error: errorHandler.getErrorMessage(err)
+    })
+  }
+}
+
 export default {
   create,
   userByID,
@@ -191,5 +203,6 @@ export default {
   addFollower,
   removeFollowing,
   removeFollower,
+  searchUser,
   findPeople
 }

@@ -1,13 +1,11 @@
 import React, {useEffect, useState} from 'react'
-import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
-import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
 import DeleteUser from './DeleteUser'
-import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
 import Icon from '@material-ui/core/Icon'
 import Avatar from '@material-ui/core/Avatar'
 import FileUpload from '@material-ui/icons/AddPhotoAlternate'
@@ -17,15 +15,15 @@ import {read, update} from './api-user.js'
 import {Redirect} from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
-  card: {
-    maxWidth: 600,
-    margin: 'auto',
-    textAlign: 'center',
-    marginTop: theme.spacing(5),
-    paddingBottom: theme.spacing(2)
+  root: {
+    flexGrow: 1,
+    overflow: 'hidden',
+    alignItems: 'center',
+    padding: theme.spacing(0, 3),
   },
   title: {
-    margin: theme.spacing(2),
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
     color: theme.palette.protectedTitle
   },
   error: {
@@ -48,7 +46,8 @@ const useStyles = makeStyles(theme => ({
   paper: {
     textAlign: 'center',
     marginTop: theme.spacing(5),
-    paddingBottom: theme.spacing(2)
+    paddingBottom: theme.spacing(2),
+    paddingTop: theme.spacing(2)
   },
   input: {
     display: 'none'
@@ -124,53 +123,51 @@ export default function EditProfile({ match }) {
       return (<Redirect to={'/user/' + values.id}/>)
     }
     return (
-      <Grid container spacing={3}>
-      <Grid item xs={8}>
-      <Card className={classes.card}>
-        <CardContent>
-          <Typography variant="h6" className={classes.title}>
-            Edit Profile
-          </Typography>
-          <Avatar src={photoUrl} className={classes.bigAvatar}/><br/>
-          <input accept="image/*" onChange={handleChange('photo')} className={classes.input} id="icon-button-file" type="file" />
-          <label htmlFor="icon-button-file">
-            <Button variant="contained" color="default" component="span">
-              Upload
-              <FileUpload/>
-            </Button>
-          </label> <span className={classes.filename}>{values.photo ? values.photo.name : ''}</span><br/>
-          <TextField id="name" label="Name" variant="outlined" className={classes.textField} value={values.name} onChange={handleChange('name')} margin="normal"/><br/>
-          <TextField
-            id="multiline-flexible"
-            label="About"
-            variant="outlined"
-            multiline
-            rows="5"
-            value={values.about}
-            onChange={handleChange('about')}
-            className={classes.textField}
-            margin="normal"
-          /><br/>
-          <TextField id="username" variant="outlined" type="username" label="Username" className={classes.textField} value={values.username} onChange={handleChange('username')} margin="normal"/><br/>
-          <TextField id="password" variant="outlined" type="password" label="Password" className={classes.textField} value={values.password} onChange={handleChange('password')} margin="normal"/>                  
-          <br/> {
-            values.error && (<Typography component="p" color="error">
-              <Icon color="error" className={classes.error}>error</Icon>
-              {values.error}
-            </Typography>)
-          }
-        </CardContent>
-        <CardActions>
-          <Button color="primary" variant="contained" onClick={clickSubmit} className={classes.submit}>Submit</Button>
-        </CardActions>
-      </Card>
-      </Grid>
-      <Grid item xs={4}>
-        <Paper elevation={3} className={classes.paper}>
-          <Typography variant="h5" className={classes.title}>Keen on missing out all the awesome content of Distorted Pages? Delete your account here ! </Typography>
-          <DeleteUser userId={values.id}/>
-        </Paper>
-      </Grid>
-      </Grid>
+      <div className={classes.root}>
+        <Grid container spacing={8}>
+          <Grid item xs={12} sm={7}>
+          <Paper className={classes.paper}>
+              <Typography variant="h6" className={classes.title}>
+                Edit Profile
+              </Typography>
+              <Avatar src={photoUrl} className={classes.bigAvatar}/><br/>
+              <input accept="image/*" onChange={handleChange('photo')} className={classes.input} id="icon-button-file" type="file" />
+              <label htmlFor="icon-button-file">
+                <Button variant="contained" color="default" component="span">
+                  Upload
+                  <FileUpload/>
+                </Button>
+              </label> <span className={classes.filename}>{values.photo ? values.photo.name : ''}</span><br/>
+              <TextField id="name" label="Name" variant="outlined" className={classes.textField} value={values.name} onChange={handleChange('name')} margin="normal"/><br/>
+              <TextField
+                id="multiline-flexible"
+                label="About"
+                variant="outlined"
+                multiline
+                rows="5"
+                value={values.about}
+                onChange={handleChange('about')}
+                className={classes.textField}
+                margin="normal"
+              /><br/>
+              <TextField id="username" variant="outlined" type="username" label="Username" className={classes.textField} value={values.username} onChange={handleChange('username')} margin="normal"/><br/>
+              <TextField id="password" variant="outlined" type="password" label="Password" className={classes.textField} value={values.password} onChange={handleChange('password')} margin="normal"/>                  
+              <br/> {
+                values.error && (<Typography component="p" color="error">
+                  <Icon color="error" className={classes.error}>error</Icon>
+                  {values.error}
+                </Typography>)
+              }
+              <Button color="primary" variant="contained" onClick={clickSubmit} className={classes.submit}>Submit</Button>
+          </Paper>
+          </Grid>
+          <Grid item xs={5}>
+          <Paper elevation={3} className={classes.paper}>
+            <Typography variant="h5" className={classes.title}>Keen on missing out all the awesome content of Quillinx? Delete your account here ! </Typography>
+            <DeleteUser userId={values.id}/>
+          </Paper>
+        </Grid>
+        </Grid>
+      </div>
     )
 }

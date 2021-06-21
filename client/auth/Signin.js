@@ -19,7 +19,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://www.quillinx.co">
+      <Link color="inherit" to="https://www.quillinx.co">
         Quillinx
       </Link>{' '}
       {new Date().getFullYear()}

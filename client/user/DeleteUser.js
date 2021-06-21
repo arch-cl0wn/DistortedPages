@@ -1,8 +1,6 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
-import IconButton from '@material-ui/core/IconButton'
 import Button from '@material-ui/core/Button'
-import DeleteIcon from '@material-ui/icons/Delete'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
@@ -11,10 +9,18 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import auth from './../auth/auth-helper'
 import {remove} from './api-user.js'
 import {Redirect, Link} from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = makeStyles(theme => ({
+  button:{
+    color: theme.palette.dark,
+  }
+}))
 
 export default function DeleteUser(props) {
   const [open, setOpen] = useState(false)
   const [redirect, setRedirect] = useState(false)
+  const classes = useStyles()
   
   const jwt = auth.isAuthenticated()
   const clickButton = () => {
@@ -40,9 +46,8 @@ export default function DeleteUser(props) {
       return <Redirect to='/'/>
     }
     return (<span>
-      <IconButton aria-label="Delete" onClick={clickButton} color="secondary">
-        <DeleteIcon/>
-      </IconButton>
+  
+      <Button onClick={clickButton} color="secondary">Delete Account</Button>
 
       <Dialog open={open} onClose={handleRequestClose}>
         <DialogTitle>{"Delete Account"}</DialogTitle>
@@ -55,7 +60,7 @@ export default function DeleteUser(props) {
           <Button onClick={handleRequestClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={deleteAccount} color="secondary" autoFocus="autoFocus">
+          <Button className={classes.button} onClick={deleteAccount} autoFocus="autoFocus">
             Confirm
           </Button>
         </DialogActions>

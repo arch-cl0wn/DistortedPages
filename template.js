@@ -2,7 +2,7 @@ export default ({markup, css}) => {
     return `<!doctype html>
       <html lang="en">
         <head>
-          <link rel="icon" href="https://image.freepik.com/free-icon/apple-iphone_318-9216.jpg">
+          <link rel="icon" href="/client/assets/images/quillinx_logo1_cropped.png" crossorigin>
           <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
           <meta charset="utf-8">
           <meta

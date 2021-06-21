@@ -13,7 +13,6 @@ import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import Edit from '@material-ui/icons/Edit'
 import Divider from '@material-ui/core/Divider'
-import DeleteUser from './DeleteUser'
 import TurnedInIcon from '@material-ui/icons/TurnedIn';
 import auth from './../auth/auth-helper'
 import {read} from './api-user.js'
@@ -38,12 +37,15 @@ const useStyles = makeStyles(theme => ({
 
   paper1:{
     height: 500,
+    [theme.breakpoints.down('sm')]:{
+      display: 'none',
+    }
   },
   bigAvatar: {
     width: 60,
     height: 60,
     margin: 10
-  }
+  },
 }))
 
 export default function Profile({ match }) {
@@ -125,7 +127,7 @@ export default function Profile({ match }) {
     return (
       <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item xs={8}>
+        <Grid item xs={12} sm={8}>
         <Paper elevation={3}>
         <List dense>
           <ListItem>
@@ -140,7 +142,6 @@ export default function Profile({ match }) {
                       <Edit/>
                     </IconButton>
                   </Link>
-                  <DeleteUser userId={values.user._id}/>
                 </ListItemSecondaryAction>)
             : (<FollowProfileButton following={values.following} onButtonClick={clickFollowButton}/>)
             }
