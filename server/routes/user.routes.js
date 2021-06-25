@@ -27,7 +27,7 @@ router.route('/api/users/:userId')
   .delete(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.remove)
 
 router.route('/api/users/search')
-  .get(userCtrl.searchUser)
+  .post(userCtrl.searchUser)
 
 router.param('userId', userCtrl.userByID)
 

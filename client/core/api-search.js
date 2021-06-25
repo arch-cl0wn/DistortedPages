@@ -3,7 +3,6 @@ const searchUsers = async (query) => {
        let response = await fetch('/api/users/search', {
            method: 'POST',
            headers: {
-            'Accept': 'application/json',
             'Content-Type': 'application/json',
            },
            body:JSON.stringify({query})

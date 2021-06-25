@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
   export default function SearchUsers() {
     const classes = useStyles()
 
-    const [search, setSearch] = useState('')
+    const [search, setSearch] = useState(undefined)
 
     const fetchUsers = (query) => {
       searchUsers({query}).then((data) => {
@@ -63,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
           console.log(data.error)
         }else{
           setSearch(query)
+          console.log(data)
         }
       })
     }
