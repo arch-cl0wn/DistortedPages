@@ -181,7 +181,7 @@ const findPeople = async (req, res) => {
 const searchUser = async(req, res) => {
   let userPattern = new RegExp('^'+req.body.query.query)
   try{
-    let users = await User.find({username:{$regex:userPattern}}).select('_id name username').limit(5)
+    let users = await User.find({username:{$regex:userPattern}}).select('_id name username photo').limit(5)
     res.json(users)
   }catch(err){
     return res.status(400).json({
