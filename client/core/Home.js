@@ -14,17 +14,22 @@ import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
     overflow: 'hidden',
   },
-  grid: {
-    display: 'inline-flex',
+  paper: {
+    padding: theme.spacing(2),
+    elevation: 0,
+    background: '#fafafa',
+    textAlign: 'center',
+    color: theme.palette.text.primary,
   },
-  mobile: {
-    [theme.breakpoints.down('sm')]: {
-      display: 'inline-flex'
-    },
-  }
+  paper1: {
+    padding: theme.spacing(0),
+    elevation: 0,
+    background: '#fafafa',
+    textAlign: 'center',
+    color: theme.palette.text.primary,
+  },
 }))
 
 
@@ -55,38 +60,56 @@ export default function Home({history}){
             </div>
             <br/>
             <br/>
-            <br/>
-            <br/>
-            <br/>
-            <Grid container spacing={3} alignItems="center" justify="center">
-              <Paper elevation={0} className={classes.grid}>
-                <Grid item xs={7} className={classes.mobile}>
-                    <img src={Picture} style={{maxWidth:"450px"}}/>
+            <Grid container spacing={0} alignItems="center" justify="center">
+                <Grid item xs={12} sm={6}>
+                  <Paper elevation={0} className={classes.paper}>
+                    <img src={Picture} style={{maxWidth:"500px"}}/>
+                  </Paper>
                 </Grid>
-                <Grid item xs={5} className={classes.mobile}>
-                    <Typography variant="body1" style={{justify: "center", alignContent: "center"}}>This is where you write stuff idk eh</Typography>
+                <Grid item sm={6} xs={12} >
+                <Paper elevation={0} className={classes.paper1}>
+                    <Typography variant="h1" align="center">Share Your Thoughts</Typography>
+                    <br/>
+                    <Typography variant="body1" align="center">
+                    Have something so say? Share your thoughts with the world with Quillinx Journals !!
+                    </Typography>
+                </Paper>
                 </Grid>
-              </Paper>
             </Grid>
-            <Grid container spacing={3} alignItems="center" justify="center">
-              <Paper elevation={0} className={classes.grid}>
+            <br/>
+            <br/>
+            <br/>
+            <Grid container spacing={0} alignItems="center" justify="center">
                 <Grid item xs={5}>
-                  <Typography variant="body1" style={{justify: "center", alignContent: "center"}}>This is where you write stuff idk eh</Typography>
+                <Paper elevation={0} className={classes.paper}>
+                <Typography variant="h1" align="center">Chat With Friends</Typography>
+                <br/>
+                    <Typography variant="body1" style={{justify: "center", alignContent: "center"}}>
+                      Get in touch with people all around the world without caring for your privacy being compromised :D
+                    </Typography>
+                  </Paper>
                 </Grid>
                 <Grid item xs={7}>
-                    <img src={Picture2} style={{maxWidth:"400px"}}/>
+                  <Paper elevation={0} className={classes.paper}>
+                      <img src={Picture2} style={{maxWidth:"400px"}}/>
+                  </Paper>
                 </Grid>
-              </Paper>
             </Grid>
             <Grid container spacing={3} alignItems="center" justify="center">
-              <Paper elevation={0} className={classes.grid}>
                 <Grid item xs={7}>
+                <Paper elevation={0} className={classes.paper}>
                     <img src={Picture1} style={{maxWidth:"400px"}}/>
+                </Paper>
                 </Grid>
                 <Grid item xs={5}>
-                  <Typography variant="body1" style={{justify: "center", alignContent: "center"}}>This is where you write stuff idk eh</Typography>
+                <Paper elevation={0} className={classes.paper}>
+                <Typography variant="h1" align="center">Capture Moments</Typography>
+                <br/>
+                  <Typography variant="body1" style={{justify: "center", alignContent: "center"}}>
+                    Connect with people better through posts and a newsfeed that keeps you updated on your favourite people.
+                    </Typography>
+                </Paper>
                 </Grid>
-              </Paper>
             </Grid>
             <br/>
             <br/>

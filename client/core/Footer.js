@@ -14,7 +14,8 @@ export default function Footer() {
                       height: "50vh",
                       color: "#f5f5f5"
                     }} >
-
+            <br/>
+               <Typography variant="h2" size="56" color="inherit">Quillinx</Typography>
             </div>
     </React.Fragment>
   );

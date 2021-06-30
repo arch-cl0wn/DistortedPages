@@ -36,6 +36,20 @@ let theme = createMuiTheme({
       ].join(','),
       fontSize: 22,
     },
+    h1: {
+      fontFamily: [
+        'Poppins',
+        'sans-serif',
+      ].join(','),
+      fontSize: 30,
+    },
+    h2: {
+      fontFamily: [
+        'Poppins',
+        'sans-serif',
+      ].join(','),
+      fontSize: 60,
+    },
   },
 
 });
