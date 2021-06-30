@@ -7,6 +7,9 @@ import Footer from './Footer'
 import Newsfeed from './../post/Newsfeed'
 import Banner from './../assets/images/quillinx_banner.png'
 import Picture1 from './../assets/images/pic1.png'
+import Picture from './../assets/images/pic.png'
+import Picture2 from './../assets/images/pic2.png'
+import Typography from '@material-ui/core/Typography'
 
 
 const useStyles = makeStyles(theme => ({
@@ -14,6 +17,14 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     overflow: 'hidden',
   },
+  grid: {
+    display: 'inline-flex',
+  },
+  mobile: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'inline-flex'
+    },
+  }
 }))
 
 
@@ -48,9 +59,32 @@ export default function Home({history}){
             <br/>
             <br/>
             <Grid container spacing={3} alignItems="center" justify="center">
-              <Paper elevation={0}>
+              <Paper elevation={0} className={classes.grid}>
+                <Grid item xs={7} className={classes.mobile}>
+                    <img src={Picture} style={{maxWidth:"450px"}}/>
+                </Grid>
+                <Grid item xs={5} className={classes.mobile}>
+                    <Typography variant="body1" style={{justify: "center", alignContent: "center"}}>This is where you write stuff idk eh</Typography>
+                </Grid>
+              </Paper>
+            </Grid>
+            <Grid container spacing={3} alignItems="center" justify="center">
+              <Paper elevation={0} className={classes.grid}>
+                <Grid item xs={5}>
+                  <Typography variant="body1" style={{justify: "center", alignContent: "center"}}>This is where you write stuff idk eh</Typography>
+                </Grid>
                 <Grid item xs={7}>
-                    <img src={Picture1} style={{maxWidth:"500px"}}/>
+                    <img src={Picture2} style={{maxWidth:"400px"}}/>
+                </Grid>
+              </Paper>
+            </Grid>
+            <Grid container spacing={3} alignItems="center" justify="center">
+              <Paper elevation={0} className={classes.grid}>
+                <Grid item xs={7}>
+                    <img src={Picture1} style={{maxWidth:"400px"}}/>
+                </Grid>
+                <Grid item xs={5}>
+                  <Typography variant="body1" style={{justify: "center", alignContent: "center"}}>This is where you write stuff idk eh</Typography>
                 </Grid>
               </Paper>
             </Grid>

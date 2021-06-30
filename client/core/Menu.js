@@ -6,9 +6,14 @@ import Divider from '@material-ui/core/Divider'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import InboxIcon from '@material-ui/icons/MoveToInbox'
 import { makeStyles } from '@material-ui/core/styles'
-import MailIcon from '@material-ui/icons/Mail'
+import ChatIcon from '@material-ui/icons/Telegram'
+import HomeIcon from '@material-ui/icons/Home'
+import CreateIcon from '@material-ui/icons/Create'
+import SettingsIcon from '@material-ui/icons/Settings'
+import ActivityIcon from '@material-ui/icons/ViewHeadline'
+import ExploreIcon from '@material-ui/icons/Explore'
+import ProfileIcon from '@material-ui/icons/AccountCircle'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
@@ -62,21 +67,37 @@ function Menu({history}) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
+          <ListItem button key={1}>
+            <ListItemIcon><HomeIcon/></ListItemIcon>
+            <ListItemText primary="Home" />
           </ListItem>
-        ))}
+          <ListItem button key={2}>
+            <ListItemIcon><ActivityIcon/></ListItemIcon>
+            <ListItemText primary="Activities" />
+          </ListItem>
+          <ListItem button key={3}>
+            <ListItemIcon><ChatIcon/></ListItemIcon>
+            <ListItemText primary="Chat" />
+          </ListItem>
+          <ListItem button key={4}>
+            <ListItemIcon><ExploreIcon/></ListItemIcon>
+            <ListItemText primary="Find People" />
+          </ListItem>
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
+      <ListItem button key={1}>
+            <ListItemIcon><ProfileIcon/></ListItemIcon>
+            <ListItemText primary="Profile" />
           </ListItem>
-        ))}
+          <ListItem button key={2}>
+            <ListItemIcon><CreateIcon/></ListItemIcon>
+            <ListItemText primary="Create" />
+          </ListItem>
+          <ListItem button key={3}>
+            <ListItemIcon><SettingsIcon/></ListItemIcon>
+            <ListItemText primary="Settings" />
+          </ListItem>
       </List>
     </div>
   );

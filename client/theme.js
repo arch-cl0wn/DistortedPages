@@ -25,13 +25,13 @@ let theme = createMuiTheme({
 
   typography: {
     fontFamily: [
-      'Black Han Sans',
-      'Do Hyeon',
+      'Poppins',
+      'Lora',
       'sans-serif',
     ].join(','),
     body1: {
       fontFamily: [
-        'Do Hyeon',
+        'Lora',
         'sans-serif',
       ].join(','),
       fontSize: 22,
