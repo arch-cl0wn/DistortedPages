@@ -1,7 +1,13 @@
 import React, {useState} from 'react'
 import {fade, makeStyles} from '@material-ui/core/styles'
-import InputBase from '@material-ui/core/InputBase';
-import SearchIcon from '@material-ui/icons/Search';
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemAvatar from '@material-ui/core/ListItemAvatar'
+import ListItemText from '@material-ui/core/ListItemText' 
+import ClickAwayListener from '@material-ui/core/ClickAwayListener'
+import Avatar from '@material-ui/core/Avatar'
+import InputBase from '@material-ui/core/InputBase'
+import SearchIcon from '@material-ui/icons/Search'
 import {searchUsers} from './api-search'
 
 
@@ -50,25 +56,36 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
       },
     },
+    avatar: {
+      marginRight: theme.spacing(1)
+    },
   }));
 
   export default function SearchUsers() {
     const classes = useStyles()
 
-    const [search, setSearch] = useState(undefined)
+    const [search, setSearch] = useState('')
+    const [values, setValues] = useState([])
+    const [open, setOpen] = React.useState(true)
 
     const fetchUsers = (query) => {
+      setSearch(query)
       searchUsers({query}).then((data) => {
         if (data && data.error){
           console.log(data.error)
         }else{
-          setSearch(query)
+          setValues(data)
           console.log(data)
         }
       })
     }
 
+    const handleClickAway = () => {
+      setOpen(false);
+    }
+
       return(
+        <ClickAwayListener onClickAway={handleClickAway}>
         <div className={classes.sectionDesktop}>
         <div className={classes.search}>
               <div className={classes.searchIcon}>
@@ -76,6 +93,7 @@ const useStyles = makeStyles((theme) => ({
               </div>
               <InputBase
                 placeholder="Search…"
+                value={search}
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput,
@@ -84,6 +102,20 @@ const useStyles = makeStyles((theme) => ({
                 onChange={(e)=>fetchUsers(e.target.value)}
               />
             </div>
+            {open?
+            <List>
+            {values.map((item, i) => {
+              return <span key={i}>
+                <ListItem>
+                  <ListItemAvatar className={classes.avatar}>
+                    <Avatar src={'/api/users/photo/'+item._id}/>
+                  </ListItemAvatar>
+                <ListItemText primary={item.name}/>
+                </ListItem>
+              </span>
+            })}
+            </List> : null}
         </div>
+        </ClickAwayListener>
       )
   }

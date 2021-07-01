@@ -67,38 +67,40 @@ function Menu({history}) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-          <ListItem button key={1}>
+          <ListItem button key="1" component={Link} to="/">
             <ListItemIcon><HomeIcon/></ListItemIcon>
-            <ListItemText primary="Home" />
+            <ListItemText primary="Home" color="inherit"/>
           </ListItem>
-          <ListItem button key={2}>
+          <ListItem button key="2" component={Link} to="/activities">
             <ListItemIcon><ActivityIcon/></ListItemIcon>
             <ListItemText primary="Activities" />
           </ListItem>
-          <ListItem button key={3}>
+          <ListItem button key="3" component={Link} to="/chat">
             <ListItemIcon><ChatIcon/></ListItemIcon>
             <ListItemText primary="Chat" />
           </ListItem>
-          <ListItem button key={4}>
+          <ListItem button key="4" component={Link} to="/explore">
             <ListItemIcon><ExploreIcon/></ListItemIcon>
             <ListItemText primary="Find People" />
           </ListItem>
       </List>
       <Divider />
+      {auth.isAuthenticated() && (
       <List>
-      <ListItem button key={1}>
+          <ListItem button key="1" component={Link} to={"/user/" + auth.isAuthenticated().user._id}>
             <ListItemIcon><ProfileIcon/></ListItemIcon>
             <ListItemText primary="Profile" />
           </ListItem>
-          <ListItem button key={2}>
+          <ListItem button key="2" component={Link} to="/create">
             <ListItemIcon><CreateIcon/></ListItemIcon>
             <ListItemText primary="Create" />
           </ListItem>
-          <ListItem button key={3}>
+          <ListItem button key="3" component={Link} to={"/user/edit/" + auth.isAuthenticated().user._id}>
             <ListItemIcon><SettingsIcon/></ListItemIcon>
             <ListItemText primary="Settings" />
           </ListItem>
       </List>
+      )}
     </div>
   );
 
@@ -119,7 +121,7 @@ function Menu({history}) {
           </SwipeableDrawer>
           </IconButton>
       ))}
-        <Typography variant="h4" color="inherit" noWrap>
+        <Typography variant="h2" color="inherit" noWrap>
           Quillinx
         </Typography>
         <SearchUser/>
@@ -127,11 +129,11 @@ function Menu({history}) {
         {
           !auth.isAuthenticated() && (<span>
             <Link to="/signup">
-              <Button style={isActive(history, "/signup")}>Sign up
+              <Button style={isActive(history, "/signup")}><Typography variant="h3">Sign Up</Typography>
               </Button>
             </Link>
             <Link to="/signin">
-              <Button style={isActive(history, "/signin")}>Sign In
+              <Button style={isActive(history, "/signin")}><Typography variant="h3">Sign In</Typography>
               </Button>
             </Link>
           </span>)
@@ -139,11 +141,11 @@ function Menu({history}) {
         {
           auth.isAuthenticated() && (<span>
             <Link to={"/user/" + auth.isAuthenticated().user._id}>
-              <Button style={isActive(history, "/user/" + auth.isAuthenticated().user._id)}>My Profile</Button>
+              <Button style={isActive(history, "/user/" + auth.isAuthenticated().user._id)}><Typography variant="h3">My Profile</Typography></Button>
             </Link>
             <Button color="inherit" onClick={() => {
                 auth.clearJWT(() => history.push('/'))
-              }}>Sign out</Button>
+              }}><Typography variant="h3">Sign Out</Typography></Button>
           </span>)
         }
         </div>

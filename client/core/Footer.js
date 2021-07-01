@@ -15,7 +15,9 @@ export default function Footer() {
                       color: "#f5f5f5"
                     }} >
             <br/>
-               <Typography variant="h2" size="56" color="inherit">Quillinx</Typography>
+            <div style={{marginLeft: '10px'}}>
+               <Typography variant="h2" size="56" color="inherit">Quillinx: A Safe Space</Typography>
+            </div>
             </div>
     </React.Fragment>
   );

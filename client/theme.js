@@ -25,8 +25,8 @@ let theme = createMuiTheme({
 
   typography: {
     fontFamily: [
-      'Poppins',
       'Lora',
+      'Poppins',
       'sans-serif',
     ].join(','),
     body1: {
@@ -43,12 +43,19 @@ let theme = createMuiTheme({
       ].join(','),
       fontSize: 30,
     },
+    h3: {
+      fontFamily: [
+        'Poppins',
+        'sans-serif',
+      ].join(','),
+      fontSize: 15,
+    },
     h2: {
       fontFamily: [
         'Poppins',
         'sans-serif',
       ].join(','),
-      fontSize: 60,
+      fontSize: 45,
     },
   },
 
