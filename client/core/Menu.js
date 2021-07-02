@@ -69,7 +69,7 @@ function Menu({history}) {
       <List>
           <ListItem button key="1" component={Link} to="/">
             <ListItemIcon><HomeIcon/></ListItemIcon>
-            <ListItemText primary="Home" color="inherit"/>
+            <ListItemText primary="Home"/>
           </ListItem>
           <ListItem button key="2" component={Link} to="/activities">
             <ListItemIcon><ActivityIcon/></ListItemIcon>

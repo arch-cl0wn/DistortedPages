@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {fade, makeStyles} from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
+import Paper from '@material-ui/core/Paper'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemAvatar from '@material-ui/core/ListItemAvatar'
 import ListItemText from '@material-ui/core/ListItemText' 
@@ -9,6 +10,7 @@ import Avatar from '@material-ui/core/Avatar'
 import InputBase from '@material-ui/core/InputBase'
 import SearchIcon from '@material-ui/icons/Search'
 import {searchUsers} from './api-search'
+import {Link} from 'react-router-dom'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -59,6 +61,13 @@ const useStyles = makeStyles((theme) => ({
     avatar: {
       marginRight: theme.spacing(1)
     },
+    list: {
+      position: 'absolute',
+      width: 369,
+      color: 'white',
+      top: '50px',
+      left: '281px',
+    },
   }));
 
   export default function SearchUsers() {
@@ -66,10 +75,11 @@ const useStyles = makeStyles((theme) => ({
 
     const [search, setSearch] = useState('')
     const [values, setValues] = useState([])
-    const [open, setOpen] = React.useState(true)
+    const [open, setOpen] = React.useState(false)
 
     const fetchUsers = (query) => {
       setSearch(query)
+      setOpen((prev) => !prev)
       searchUsers({query}).then((data) => {
         if (data && data.error){
           console.log(data.error)
@@ -79,6 +89,7 @@ const useStyles = makeStyles((theme) => ({
         }
       })
     }
+
 
     const handleClickAway = () => {
       setOpen(false);
@@ -103,18 +114,20 @@ const useStyles = makeStyles((theme) => ({
               />
             </div>
             {open?
-            <List>
+            <List className={classes.list}>
             {values.map((item, i) => {
-              return <span key={i}>
-                <ListItem>
+              return <Paper elevation={0}><span key={i}>
+                <ListItem button component={Link} to={"/user/" + item._id}>
                   <ListItemAvatar className={classes.avatar}>
                     <Avatar src={'/api/users/photo/'+item._id}/>
                   </ListItemAvatar>
-                <ListItemText primary={item.name}/>
+                <ListItemText primary={item.name} secondary={item.username} color='black'/>
                 </ListItem>
               </span>
+              </Paper>
             })}
-            </List> : null}
+            </List>
+             : null}
         </div>
         </ClickAwayListener>
       )

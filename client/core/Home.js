@@ -123,7 +123,7 @@ export default function Home({history}){
               <Newsfeed/>
             </Grid>
             <Grid item sm={3}>
-              <Paper>ADS</Paper>
+              <Paper style={{height:'350px', alignItems: 'center', justify: 'center'}}>ADS</Paper>
             </Grid>
           </Grid>
         }
