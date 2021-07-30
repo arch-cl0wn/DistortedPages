@@ -13,9 +13,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/shamahoque/mern-social.git"
+    "url": "https://github.com/arch-cl0wn/DistortedPages.git"
   },
-  "homepage": "https://github.com/shamahoque/mern-social",
+  "homepage": "https://github.com/arch-cl0wn/DistortedPages",
   "main": "./dist/server.generated.js",
   "scripts": {
     "development": "nodemon",
